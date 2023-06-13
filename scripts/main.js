@@ -1,0 +1,97 @@
+const myText = document.querySelector("#result")
+const number1 = document.querySelector("#n1");
+const number2 = document.querySelector("#n2");
+const number3 = document.querySelector("#n3");
+const opPlus = document.querySelector("#plus");
+const number4 = document.querySelector("#n4");
+const number5 = document.querySelector("#n5");
+const number6 = document.querySelector("#n6");
+const opMinus = document.querySelector("#minus");
+const number7 = document.querySelector("#n7");
+const number8 = document.querySelector("#n8");
+const number9 = document.querySelector("#n9");
+const opTimes = document.querySelector("#times");
+const opTotal = document.querySelector("#total");
+const number0 = document.querySelector("#n0");
+const opPow = document.querySelector("#pow");
+const opDivide = document.querySelector("#divide");
+
+let text = null; 
+
+let operation;
+
+let text2 = null;
+
+let result;
+
+
+const numbers = [];
+numbers.push(number0, number1, number2, number3, number4, number5, number6, number7, number8, number9);
+
+
+for (let i = 0; i < numbers.length; i++){
+    function incrementation (){
+        if (text === null) {
+            text = i;
+        } else {
+            text2 = i;
+        }
+    }
+    numbers[i].addEventListener("click", incrementation);
+}
+
+
+function plus (){
+    operation = "+";
+}
+
+function minus (){
+    operation = "-";
+}
+
+function times (){
+    operation = "*";
+}
+
+function divide (){
+    operation = "/";
+}
+
+function pow (){
+    operation = "^";
+}
+
+function total (){
+    if(operation === "+"){
+        result = text + text2;
+
+    }else if (operation === "-") {
+        result = text - text2;
+    
+    }else if (operation === "*") {
+        result = text * text2;
+        
+
+    }else if (operation === "/"){
+        result = text / text2;
+
+    }else if (operation === "^") {
+        result = Math.pow(text, text2);
+
+    }
+    write();
+    text = null;
+    text2 = null;
+}
+
+opPlus.addEventListener("click", plus);
+opMinus.addEventListener("click", minus);
+opTimes.addEventListener("click", times);
+opDivide.addEventListener("click", divide);
+opPow.addEventListener("click", pow);
+opTotal.addEventListener("click", total);
+
+function write (){
+    myText.textContent = `${text} ${operation} ${text2} = ${result}`;
+}
+
