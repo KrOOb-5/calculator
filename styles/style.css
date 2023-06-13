@@ -29,13 +29,14 @@ p{
 #wrapper{
     margin: 0px auto;
     padding: 5px 16px 16px 16px;
+    border-radius: 10px;
+    background-color: white;
    
     
 }
 
 #cal{
     padding: 5px 16px 16px 16px;
-    background-color: white;
     margin: 0px auto;
     text-align: center;
    
@@ -46,13 +47,16 @@ button{
     background-color: purple;
     background: no-repeat center/cover url("../images/circle.jpg");
     font-size: 70px;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border: none;
+    background-size: 80%;
+    transition: color 1s, background-size 0.5s;
 }
 
 button:hover{
     background-image: url("../images/circle-2.jpg");
-    background-size: 120%;
+    background-size: 100%;
     cursor: pointer;
+    color: azure;
 }
