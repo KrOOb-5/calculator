@@ -18,13 +18,13 @@ const opDivide = document.querySelector("#divide");
 
 let text = null; 
 
-let operation;
+let operation = null;
 
 let text2 = null;
 
-let result;
+let result = null;
 
-let operationFunction;
+let operationFunction = null;
 
 const numbers = [];
 numbers.push(number0, number1, number2, number3, number4, number5, number6, number7, number8, number9);
@@ -37,6 +37,7 @@ for (let i = 0; i < numbers.length; i++){
         } else {
             text2 = i;
         }
+        write();
     }
     numbers[i].addEventListener("click", incrementation); // 
 }
@@ -45,26 +46,31 @@ for (let i = 0; i < numbers.length; i++){
 function plus (){
     operation = "+";
     operationFunction = function (a,b){return a + b;};
+    write();
 }
 
 function minus (){
     operation = "-";
     operationFunction = function (a,b){return a - b;};
+    write();
 }
 
 function times (){
     operation = "*";
     operationFunction = function (a,b){return a * b;};
+    write();
 }
 
 function divide (){
     operation = "/";
     operationFunction = function (a,b){return a / b;};
+    write();
 }
 
 function pow (){
     operation = "^";
     operationFunction = Math.pow;
+    write();
 }
 
 function total (){
@@ -77,7 +83,6 @@ function total (){
     // }else if (operation === "*") {
     //     result = text * text2;
     
-
     // }else if (operation === "/"){
     //     result = text / text2;
 
@@ -85,13 +90,17 @@ function total (){
     //     result = Math.pow(text, text2);
 
     // }
-    if (operationFunction){ // previne que chame a funcao antes que a propria funcao estaja definida
+    if (operationFunction && text2 !== null){ // previne que chame a funcao antes que a propria funcao esteja definida
         result = operationFunction(text, text2);
+        write();
     }
 
-    write();
+    
     text = null;
     text2 = null;
+    operation = null;
+    result = null;
+    operationFunction = null;
 }
 
 opPlus.addEventListener("click", plus);
